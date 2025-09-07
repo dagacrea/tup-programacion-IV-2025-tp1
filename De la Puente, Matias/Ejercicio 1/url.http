@@ -1,0 +1,13 @@
+@url=http://localhost:3000
+
+
+### listado de nombres
+GET {{url}}/datosMedidas
+### detelles nombres
+POST {{url}}/datosMedidas
+Content-Type: application/json
+
+{
+    "base":4,
+    "altura":6
+}
