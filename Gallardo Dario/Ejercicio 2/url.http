@@ -1,0 +1,87 @@
+@url=http://localhost:3000
+
+### Listar todos los alumnos
+GET {{url}}/alumnos
+
+### Consultar alumno por índice
+GET {{url}}/alumnos/0
+
+
+### Obtener  reprobados 
+GET {{url}}/reprobados
+
+### Obtener  aprobados 
+GET {{url}}/aprobados
+
+### Obtener  promocionados 
+GET {{url}}/promocionados
+
+### Crear alumno
+POST {{url}}/alumnos
+Content-Type: application/json
+
+{
+  "nombre": "Juan Pérez",
+  "nota1": 4,
+  "nota2": 3,
+  "nota3": 5
+}
+
+
+### Modificar notas del alumno 
+PUT {{url}}/alumnos/0
+Content-Type: application/json
+
+{
+  "nombre": "Juan Pérez",
+  "nota1": 8,
+  "nota2": 9,
+  "nota3": 7
+}
+
+### Modificar nombre y notas
+PUT {{url}}/alumnos/1
+Content-Type: application/json
+
+{
+  "nombre": "María Fernández",
+  "nota1": 10,
+  "nota2": 9,
+  "nota3": 8
+}
+
+
+### Eliminar alumno
+DELETE {{url}}/alumnos/0
+
+
+### Error: Índice inexistente 
+GET {{url}}/alumnos/99
+
+### Error: Índice inexistente 
+PUT {{url}}/alumnos/99
+Content-Type: application/json
+
+{
+  "nombre": "Inexistente",
+  "nota1": 8,
+  "nota2": 7,
+  "nota3": 6
+}
+
+### Error: Índice inexistente 
+DELETE {{url}}/alumnos/99
+
+### Error: Modificar con nombre que ya existe
+PUT {{url}}/alumnos/0
+Content-Type: application/json
+
+{
+  "nombre": "Carlos López",
+  "nota1": 8,
+  "nota2": 7,
+  "nota3": 6
+}
+
+
+
