@@ -22,7 +22,7 @@ function calcularDatos(alumno) {
 
   return {
     ...alumno,
-    promedio: Math.round(promedio * 100) / 100, // 2 decimales
+    promedio: Math.round(promedio * 100) / 100,
     estado: estado,
   };
 }
@@ -49,10 +49,10 @@ function validarAlumno(nombre, nota1, nota2, nota3, res) {
     return false;
   }
 
-  if (typeof nombre !== "string") {
+  if (typeof nombre !== "string" || nombre.trim() === "") {
     res.status(400).json({
       success: false,
-      message: "El nombre debe ser texto",
+      message: "El nombre debe ser texto y no puede estar vacío",
     });
     return false;
   }
@@ -175,6 +175,7 @@ app.put("/alumnos/:indice", (req, res) => {
       message: "Ya existe otro alumno con ese nombre",
     });
   }
+
   alumnos[indice] = {
     id: alumnos[indice].id,
     nombre: nombre.trim(),
