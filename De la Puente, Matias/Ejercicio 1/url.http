@@ -1,13 +1,146 @@
 @url=http://localhost:3000
 
 
-### listado de nombres
+
+### Lista todas las figuras
 GET {{url}}/datosMedidas
-### detelles nombres
+
+### Consultar figura por índice
+GET {{url}}/datosMedidas/0
+
+### Ver solo el tipo de una figura
+GET {{url}}/datosMedidas/0/tipo
+
+
+
+### Figuras con área mínima 
+GET {{url}}/datosMedidas?minArea=20
+
+### Figuras con perímetro máximo 
+GET {{url}}/datosMedidas?maxPerimetro=30
+
+### Área mínima Y perímetro máximo 
+GET {{url}}/datosMedidas?minArea=20&maxPerimetro=40
+
+
+### Obtener solo cuadrados
+GET {{url}}/cuadrados
+
+### Obtener solo rectángulos
+GET {{url}}/rectangulos
+
+
+### Crear rectángulo válido
 POST {{url}}/datosMedidas
 Content-Type: application/json
 
 {
-    "base":4,
-    "altura":6
+  "base": 10,
+  "altura": 5
 }
+
+### Crear cuadrado válido
+POST {{url}}/datosMedidas
+Content-Type: application/json
+
+{
+  "base": 7,
+  "altura": 7
+}
+
+
+
+###  figura a rectángulo
+PUT {{url}}/datosMedidas/0
+Content-Type: application/json
+
+{
+  "base": 15,
+  "altura": 6
+}
+
+###  figura a cuadrado
+PUT {{url}}/datosMedidas/0
+Content-Type: application/json
+
+{
+  "base": 8,
+  "altura": 8
+}
+
+
+
+###  cuadrado específico
+PUT {{url}}/cuadrados/0
+Content-Type: application/json
+
+{
+  "lado": 6
+}
+
+###  rectángulo específico
+PUT {{url}}/rectangulos/0
+Content-Type: application/json
+
+{
+  "base": 12,
+  "altura": 4
+}
+
+
+
+### Eliminar figura general
+DELETE {{url}}/datosMedidas/0
+
+### Eliminar  cuadrados
+DELETE {{url}}/cuadrados/0
+
+### Eliminar rectángulos
+DELETE {{url}}/rectangulos/0
+
+
+
+
+### Índice inexistente
+GET {{url}}/datosMedidas/99
+
+### Índice inexistente 
+PUT {{url}}/datosMedidas/99
+Content-Type: application/json
+
+{
+  "base": 8,
+  "altura": 4
+}
+
+### Índice inexistente
+DELETE {{url}}/datosMedidas/99
+
+### Datos faltantes
+POST {{url}}/datosMedidas
+Content-Type: application/json
+
+{
+  "base": 10
+}
+
+### Datos no numéricos
+POST {{url}}/datosMedidas
+Content-Type: application/json
+
+{
+  "base": "diez",
+  "altura": 5
+}
+
+###  Valores negativos
+POST {{url}}/datosMedidas
+Content-Type: application/json
+
+{
+  "base": -5,
+  "altura": 3
+}
+
+### Filtro inválido
+GET {{url}}/datosMedidas?minArea=abc
