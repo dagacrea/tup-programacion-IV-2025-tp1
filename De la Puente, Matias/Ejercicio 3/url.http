@@ -1,0 +1,47 @@
+@url=http://localhost:3000
+
+###  lista todas las tareas
+GET {{url}}/tareas
+
+###  lista tareas completadas
+GET {{url}}/tareas?completada=true
+
+###  lista tareas pendientes
+GET {{url}}/tareas?completada=false
+
+###  Obtener tarea por indice
+GET {{url}}/tareas/0
+
+###  Crear tarea valida
+POST {{url}}/tareas
+Content-Type: application/json
+
+{
+  "nombre": "Comprar leche",
+  "completada": false
+}
+
+### Modificar tarea 
+PUT {{url}}/tareas/0
+Content-Type: application/json
+
+{
+  "nombre": "Comprar pan",
+  "completada": true
+}
+
+### Cambiar estado 
+PUT {{url}}/tareas/0/estado
+Content-Type: application/json
+
+{
+  "completada": true
+}
+
+###  Eliminar tarea por índice
+DELETE {{url}}/tareas/0
+
+###  Eliminar todas las tareas completadas
+DELETE {{url}}/tareas/completadas
+
+
